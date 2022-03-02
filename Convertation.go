@@ -38,29 +38,42 @@ import (
 //
 //}
 
-func romanToArab(romanNum string) int {
-
-	romanNumRune := []rune(romanNum)
-	RomanArab := map[rune]int{
-		'I': 1,
-		'V': 5,
-		'X': 10,
-		'L': 50,
-		'C': 100,
-		'D': 500,
-		'M': 1000,
-	}
-
-	arabNum := 0
-
-	for i, j := 0, 1; j < len(romanNum); i, j = i+1, j+1 {
-		arabNum += RomanArab[romanNumRune[j]]
-		if RomanArab[romanNumRune[j]] > RomanArab[romanNumRune[j]] {
-			arabNum -= RomanArab[romanNumRune[j]] * 2
-		}
-	}
-	return arabNum
-}
+//func romanToArab(romanNum string) (int, error) {
+//
+//	//romanNumRune := []rune(romanNum)
+//	//fmt.Println(romanNumRune)
+//	RomanArab := map[string]int{
+//		"I": 1,
+//		"V": 5,
+//		"X": 10,
+//		"L": 50,
+//		"C": 100,
+//		"D": 500,
+//		"M": 1000,
+//	}
+//	keys := []string{}
+//	for _, runkey := range romanNum {
+//
+//		fmt.Println("fmt.Print(string(romanNumRune[runkey])):  ")
+//		fmt.Print(RomanArab[string(runkey)])
+//		if string(RomanArab[string(runkey)]) == "" {
+//			return 0, errors.New("non-convertible number. I V X L C D M")
+//		}
+//		keys = append(keys, string(runkey))
+//	}
+//	//for i, c := range romanN
+//
+//	arabNum := 0
+//	arabNum += RomanArab[keys[0]]
+//	for i, j := 0, 1; j < len(romanNum); i, j = i+1, j+1 {
+//		//if (romanNumRune)
+//		arabNum += RomanArab[keys[j]]
+//		if RomanArab[keys[j]] > RomanArab[keys[i]] {
+//			arabNum -= RomanArab[keys[j]] * 2
+//		}
+//	}
+//	return arabNum, nil
+//}
 
 func ArabToRoman(arabNum int) (string, error) {
 
@@ -82,13 +95,18 @@ func ArabToRoman(arabNum int) (string, error) {
 		4:    "IV",
 		1:    "I",
 	}
-	if arabNum > 3999 {
-		return "", errors.New("non-convertible number. >3999")
+	if arabNum > 3999 || arabNum < 1 {
+		return "", errors.New("non-convertible number. >3999 || < 1")
 	}
-	for key, value := range ArabRoman {
-		if arabNum >= key {
-			romanResult += value
-			arabNum -= key
+
+	//Fun fact: in Golang iterations over maps random
+	keys := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+
+	//for k := range keys {
+	for i := 0; i < len(keys); i++ {
+		if arabNum >= keys[i] {
+			romanResult += ArabRoman[keys[i]]
+			arabNum -= keys[i]
 		}
 	}
 
