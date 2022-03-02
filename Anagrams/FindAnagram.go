@@ -1,0 +1,5 @@
+package Anagram
+
+func Anagram() {
+
+}
