@@ -1,5 +1,44 @@
 # testtask
 
+
+Куда смотреть? 
+
+Под каждое задание своя папка:
+RomanNum, Anagrams,.... 
+
+Установить go
+Перейти в папку (RomanNum/Anagrams/...) 
+В терминале запустить go test
+
+Чтобы посмотреть, что находится в тестах:
+
+Перейти в файл с постфиксом _test
+
+Можно добавить свой блок или отредактировать уже имеющийся 
+В args вставить то, что в функцию хотите подать на входе, 
+В want - то, что хотите получить в результате
+ WantErr - bool параметр. Ожидается ли от этого теста ошибка или нет
+
+
+
+Each task has its own folder:
+RomanNum, Anagrams,....
+
+Install go
+Go to task folder (RomanNum/Anagrams/...)
+In terminal run "go test"
+
+To see what's in the tests:
+
+Go to file with postfix _test
+You can add your own block or edit an existing one.
+In args, insert what you want to feed into the function at the input,
+In want - what you want to get as a result
+  WantErr - bool parameter. Whether this test is expected to fail or not
+
+
+Задания:
+
  1) Написать функцию, которая принимает в качестве аргумента десятичное число и возвращает число, написанное римскими числами. (вариации задачи: перевести число из одной системы счисления в другую, например, из двоичной в десятичную)
  ----
   Пример: 55
