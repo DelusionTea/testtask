@@ -52,7 +52,6 @@ func finder(text []string) ([]string, error) {
 	}
 	parsedText := make(map[string]string)
 	for _, word := range text {
-		//check key is new, if not we add new and old one
 		sortedWord := string(quickSort([]rune(word)))
 		if parsedText[sortedWord] != "" {
 			resultArr = append(resultArr, parsedText[sortedWord])
