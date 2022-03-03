@@ -35,29 +35,30 @@ func quickSort(arr []rune) []rune {
 	sort(newArr, 0, len(arr)-1)
 	return newArr
 }
+func getMapKey(m map[string]int, value int) (key string, result bool) {
+	for k, v := range m {
+		if v == value {
+			key = k
+			result = true
+			return
+		}
+	}
+	return
+}
 func finder(text []string) ([]string, error) {
 	var resultArr []string
 	if len(text) <= 1 {
 		return []string{""}, errors.New("not enough items. <2")
 	}
-	parsedText := make(map[string][]rune)
+	parsedText := make(map[string]string)
 	for _, word := range text {
-		parsedText[word] = quickSort([]rune(word))
-	}
-	var keys []string
-	for key := range parsedText {
-		keys = append(keys, key)
-	}
-	for i, j := 0, 1; j < len(keys); i, j = i+1, j+1 {
-		if len(keys[i]) == len(keys[j]) {
-			if string(parsedText[keys[i]]) == string(parsedText[keys[j]]) {
-				//log.Println(len(resultArr))
-				//if len(resultArr) == 0 {
-				resultArr = append(resultArr, keys[i])
-				//}
-				resultArr = append(resultArr, keys[j])
-			}
+		//check key is new, if not we add new and old one
+		sortedWord := string(quickSort([]rune(word)))
+		if parsedText[sortedWord] != "" {
+			resultArr = append(resultArr, parsedText[sortedWord])
+			resultArr = append(resultArr, word)
 		}
+		parsedText[sortedWord] = word
 	}
 
 	if len(resultArr) == 0 {
