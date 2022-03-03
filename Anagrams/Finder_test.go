@@ -16,11 +16,19 @@ func Test_finder(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "positive test",
+			name: "positive test 1",
 			args: args{
 				text: []string{"cat", "act", "dinosaur", "testing", "setting"},
 			},
 			want:    []string{"cat", "act", "testing", "setting"},
+			wantErr: false,
+		},
+		{
+			name: "positive test 2",
+			args: args{
+				text: []string{"cat", "dododo", "act", "ododod", "dinosaur", "testing", "setting"},
+			},
+			want:    []string{"cat", "act", "dododo", "ododod", "testing", "setting"},
 			wantErr: false,
 		},
 		{
