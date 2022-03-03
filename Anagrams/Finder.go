@@ -1,5 +1,7 @@
 package Anagram
 
+import "errors"
+
 func sort(arr []rune, start, end int) {
 	if (end - start) < 1 {
 		return
@@ -25,6 +27,7 @@ func sort(arr []rune, start, end int) {
 }
 
 func quickSort(arr []rune) []rune {
+
 	newArr := make([]rune, len(arr))
 	for i, v := range arr {
 		newArr[i] = v
@@ -32,21 +35,37 @@ func quickSort(arr []rune) []rune {
 	sort(newArr, 0, len(arr)-1)
 	return newArr
 }
-func Finder(text []string) []string {
+func finder(text []string) ([]string, error) {
 	var resultArr []string
-	//check dublicates if result is not empty, check @contains@
+	if len(text) <= 1 {
+		return []string{""}, errors.New("not enough items. <2")
+	}
 	parsedText := make(map[string][]rune)
 	for _, word := range text {
 		parsedText[word] = quickSort([]rune(word))
 	}
-	for key, value := range parsedText {
+	var keys []string
+	for key := range parsedText {
 		if len(resultArr) != 0 {
 			//we can add only new one
 		}
-
+		keys = append(keys, key)
 	}
-	//1.check size
-	//2.v1 sort? or compare
-	//2.v2 sort, then use ==  OR check each rune
-	return resultArr
+	for i, j := 0, 1; j < len(keys); i, j = i+1, j+1 {
+		if len(keys[i]) == len(keys[j]) {
+			if string(parsedText[keys[i]]) == string(parsedText[keys[j]]) {
+				//log.Println(len(resultArr))
+				//if len(resultArr) == 0 {
+				resultArr = append(resultArr, keys[i])
+				//}
+				resultArr = append(resultArr, keys[j])
+			}
+		}
+	}
+
+	if len(resultArr) == 0 {
+		return []string{""}, errors.New("Can't Find Anagrams")
+	}
+
+	return resultArr, nil
 }
