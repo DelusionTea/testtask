@@ -46,9 +46,6 @@ func finder(text []string) ([]string, error) {
 	}
 	var keys []string
 	for key := range parsedText {
-		if len(resultArr) != 0 {
-			//we can add only new one
-		}
 		keys = append(keys, key)
 	}
 	for i, j := 0, 1; j < len(keys); i, j = i+1, j+1 {
