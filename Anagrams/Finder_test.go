@@ -32,6 +32,14 @@ func Test_finder(t *testing.T) {
 			wantErr: false,
 		},
 		{
+			name: "check dublicates",
+			args: args{
+				text: []string{"cat", "dododo", "act", "ododod", "tca", "dinosaur", "testing", "setting"},
+			},
+			want:    []string{"cat", "act", "tca", "dododo", "ododod", "testing", "setting"},
+			wantErr: false,
+		},
+		{
 			name: "negative test 1",
 			args: args{
 				text: []string{"cat"},
