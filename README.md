@@ -4,10 +4,10 @@
 Куда смотреть? 
 
 Под каждое задание своя папка:
-RomanNum, Anagrams,.... 
+RomanNum, Anagrams,FindMaxNum 
 
 Установить go
-Перейти в папку (RomanNum/Anagrams/...) 
+Перейти в папку (RomanNum/Anagrams/FindMaxNum) 
 В терминале запустить go test
 
 Чтобы посмотреть, что находится в тестах:
@@ -22,10 +22,10 @@ RomanNum, Anagrams,....
 
 
 Each task has its own folder:
-RomanNum, Anagrams,....
+RomanNum, Anagrams,FindMaxNum
 
 Install go
-Go to task folder (RomanNum/Anagrams/...)
+Go to task folder (RomanNum/Anagrams/FindMaxNum)
 In terminal run "go test"
 
 To see what's in the tests:
